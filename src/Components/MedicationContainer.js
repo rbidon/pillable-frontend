@@ -1,19 +1,22 @@
 import React, {useState,useEffect, Component} from 'react';
+// import css
+import './MedicationContainer.css'
 // import Medication List
 import MedicationList from './MedicationList'
+// import addMedications
+import addMedications from './AddMedications'
 let baseURL= process.env.REACT_APP_.BASE_URL
 
 class MedicationContainer extends Component {
     constructor(props){
         super(props)
         this.state= {
-            medications:[]
+            medications:[],
+            // openMedicationList: false
         }
     }
     // fetching the data properly
    // console.log("Fetching the data by that api " + baseURL)
-
- 
     getMedications =()=>{
         fetch(baseURL)
         .then((res =>{
@@ -37,7 +40,7 @@ class MedicationContainer extends Component {
 
     render(){
    return (
-     <div className="medication-container">
+     <div className="medications-holder">
      Medication Container
      {
         this.state.medications
@@ -47,8 +50,10 @@ class MedicationContainer extends Component {
             this.state.medications.map((medication=>{
                 return(
                     // Medication List
-                    <div key={medication.id}>
-                        <MedicationList allmedications={medication}/>
+                    <div className='medication-container' key={medication.id}>
+                        <MedicationList allmedications={medication}
+                        //  openMedicationList = {this.state.openMedicationList}
+                         />
                     </div>
                 )
             }))
@@ -62,6 +67,7 @@ class MedicationContainer extends Component {
    )
     }
 }
+
 // const MedicationContainer = () => {
 //      // fetching the data properly
 //     // console.log("Fetching the data by that api " + baseURL)
@@ -94,8 +100,7 @@ class MedicationContainer extends Component {
 //        {medications.map((medication =>{
 //         return(
 //             <div key={medication.id}>
-//                 <h3>Name {medication.name}</h3>
-//                 <h4> Quantity: {medication.quantity}</h4>
+//                 <MedicationList medicationsList={setMedications}/>
 //             </div>
 //         )
 //        }))

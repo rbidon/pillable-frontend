@@ -1,10 +1,62 @@
 // will render all the medications that are created 
+// const MedicationList = (props) => {
+//     return(
+//         <div className="medication-list" 
+//         // onclick={() => {
+//         //     this.state.openMedicationList === true; 
+//         // }}
+//         >
+//             <p className='medication-name'>
+//                 Name: {props.allmedications.name}
+//             </p>
+//             <p className ='medication-qty'>
+//                 QTY: {props.allmedications.quantity}
+//             </p>
+//             <p className ='medication-dosage'>
+//                 Dosage Frequency: {props.allmedications.dosage_frequency}
+//             </p>
+//             <p className ='medication-refill_date'> Refill Date: {props.allmedications.refill_date}</p>
+//             <p className ='medication-refill-remaining'>
+//                 Refill Remaining: {props.allmedications.refill_remaining}
+//             </p>
+//             <p className='medication-notes'>
+//                 Notes: {props.allmedications.notes}
+//             </p>
+//             <p className =''>
+//                 Created at: {props.created_at}</p>
+//             <div className='edit-deleteBtn'>
+//                 <button type='button' className='btn btn-primary'>Edit</button>
+//                 <button type='button' className=''>Delete</button>
+//             </div>
+//         </div>
+//     )
+// }
+
  const MedicationList = (props) => {
     return(
         <div className="medication-list">
-            <h2 className='medication-name'>
+            <p className='medication-name'>
                 Name: {props.allmedications.name}
-            </h2>
+            </p>
+            <p className ='medication-qty'>
+                QTY: {props.allmedications.quantity}
+            </p>
+            <p className ='medication-dosage'>
+                Dosage Frequency: {props.allmedications.dosage_frequency}
+            </p>
+            <p className ='medication-refill_date'> Refill Date: {props.allmedications.refill_date}</p>
+            <p className ='medication-refill-remaining'>
+                Refill Remaining: {props.allmedications.refill_remaining}
+            </p>
+            <p className='medication-notes'>
+                Notes: {props.allmedications.notes}
+            </p>
+            <p className =''>
+                Created at: {props.created_at}</p>
+            <div className='edit-deleteBtn'>
+                <button type='button' className='btn'>Edit</button>
+                <button type='button' className='btn'>Delete</button>
+            </div>
         </div>
     )
 }
