@@ -5,21 +5,22 @@ import Header from './Components/Header'
 import MedicationContainer from './Components/MedicationContainer'; 
 import AddMedications from './Components/AddMedications'
 const App =() => {
+//  open the modal
+  const [openAddMedication, setOpenAddMedication] = useState(false)
+  console.log(openAddMedication)
  
-  const [addMedications, setAddMedications] = useState(false)
-  console.log(addMedications)
   return (
     <div className="App">
       App Container
       <Header/>
       {/* Add Medication Components / model function*/}
-      <div className='openAddMedicarion' onClick = {() => {
-        setAddMedications(true)
+      <div className='openAddMedication' onClick = {() => {
+        openAddMedication(true)
       }}>
         Add Medication Icon (+)
       </div>
-      {AddMedications && <AddMedications openAddMedication = {setAddMedications}/>}
-      <MedicationContainer />
+      {AddMedications && <AddMedications openAddMedication = {setOpenAddMedication}/>}
+      <MedicationContainer/>
 
     </div>
   );

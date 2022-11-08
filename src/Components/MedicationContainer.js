@@ -4,7 +4,7 @@ import './MedicationContainer.css'
 // import Medication List
 import MedicationList from './MedicationList'
 // import addMedications
-import addMedications from './AddMedications'
+import AddMedications from './AddMedications'
 let baseURL= process.env.REACT_APP_.BASE_URL
 
 class MedicationContainer extends Component {
@@ -15,6 +15,18 @@ class MedicationContainer extends Component {
             // openMedicationList: false
         }
     }
+    
+    addMedications =(medication) =>{
+        console.log("Parent AddMedications")
+        // const copyMedications = [...this.state.medications]
+        //  copyMedications.unshift(medication)
+        //  console.log( "Before AddMedications" + this.state.medications)
+         this.setState([
+             ...this.state.medications, medication
+         ])
+         this.getMedications()
+        //  console.log( "After AddMedications" + this.state.medications)
+     }
     // fetching the data properly
    // console.log("Fetching the data by that api " + baseURL)
     getMedications =()=>{
@@ -38,25 +50,31 @@ class MedicationContainer extends Component {
         this.getMedications()
     }
 
+    
     render(){
    return (
      <div className="medications-holder">
      Medication Container
+     <AddMedications handleAddMedications={this.addMedications}/>
      {
-        this.state.medications
+        this.state.medications.length
         ?
         <>
+        
         {
-            this.state.medications.map((medication=>{
+            this.state.medications.map((medication,index)=>{
                 return(
                     // Medication List
-                    <div className='medication-container' key={medication.id}>
-                        <MedicationList allmedications={medication}
+                    <div className='medication-container'>
+                        <div className='medications-holder'
+                        key={index}>
+                        <MedicationList medicationList={medication}
                         //  openMedicationList = {this.state.openMedicationList}
                          />
+                         </div>
                     </div>
                 )
-            }))
+            })
         }
         </>
      :
@@ -71,9 +89,9 @@ class MedicationContainer extends Component {
 // const MedicationContainer = () => {
 //      // fetching the data properly
 //     // console.log("Fetching the data by that api " + baseURL)
-//   const [medications, setMedications] = useState(null)
+//   const [medications, setMedications] = useState([])
   
-//   useEffect(() => {
+//   const fetchData = () => {
 //     fetch(baseURL)
 //       .then(res => {
 //         if(res.status ===200){
@@ -86,21 +104,25 @@ class MedicationContainer extends Component {
 //       .then((data => {
 //         console.log(data);
 //         // medications has the data from my api
-//         setMedications(data)
+//         setMedications([...medications,data])
 //         console.log(medications)
 //     }))
-//   }, [])
+//   }
+//   useEffect(() => {
+//     fetchData()
+//   }, []);
 
 //     return (
 //        <>
 //        Medication Container
-//        { medications && medications.length >0
+//        <p>{medications.name}</p>
+//        { medications && medications.length
 //        ?
 //       <>
 //        {medications.map((medication =>{
 //         return(
 //             <div key={medication.id}>
-//                 <MedicationList medicationsList={setMedications}/>
+//                 <MedicationList allmedications={setMedications}/>
 //             </div>
 //         )
 //        }))

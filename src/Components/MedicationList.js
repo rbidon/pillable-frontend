@@ -7,20 +7,20 @@
 //         // }}
 //         >
 //             <p className='medication-name'>
-//                 Name: {props.allmedications.name}
+//                 Name: {props.medicationList.name}
 //             </p>
 //             <p className ='medication-qty'>
-//                 QTY: {props.allmedications.quantity}
+//                 QTY: {props.medicationList.quantity}
 //             </p>
 //             <p className ='medication-dosage'>
-//                 Dosage Frequency: {props.allmedications.dosage_frequency}
+//                 Dosage Frequency: {props.medicationList.dosage_frequency}
 //             </p>
-//             <p className ='medication-refill_date'> Refill Date: {props.allmedications.refill_date}</p>
+//             <p className ='medication-refill_date'> Refill Date: {props.medicationList.refill_date}</p>
 //             <p className ='medication-refill-remaining'>
-//                 Refill Remaining: {props.allmedications.refill_remaining}
+//                 Refill Remaining: {props.medicationList.refill_remaining}
 //             </p>
 //             <p className='medication-notes'>
-//                 Notes: {props.allmedications.notes}
+//                 Notes: {props.medicationList.notes}
 //             </p>
 //             <p className =''>
 //                 Created at: {props.created_at}</p>
@@ -34,22 +34,23 @@
 
  const MedicationList = (props) => {
     return(
+        <div id={props.index}>
         <div className="medication-list">
             <p className='medication-name'>
-                Name: {props.allmedications.name}
+                Name: {props.medicationList.name}
             </p>
             <p className ='medication-qty'>
-                QTY: {props.allmedications.quantity}
+                QTY: {props.medicationList.quantity}
             </p>
             <p className ='medication-dosage'>
-                Dosage Frequency: {props.allmedications.dosage_frequency}
+                Dosage Frequency: {props.medicationList.dosage_frequency}
             </p>
-            <p className ='medication-refill_date'> Refill Date: {props.allmedications.refill_date}</p>
+            <p className ='medication-refill_date'> Refill Date: {props.medicationList.refill_date}</p>
             <p className ='medication-refill-remaining'>
-                Refill Remaining: {props.allmedications.refill_remaining}
+                Refill Remaining: {props.medicationList.refill_remaining}
             </p>
             <p className='medication-notes'>
-                Notes: {props.allmedications.notes}
+                Notes: {props.medicationList.notes}
             </p>
             <p className =''>
                 Created at: {props.created_at}</p>
@@ -57,6 +58,7 @@
                 <button type='button' className='btn'>Edit</button>
                 <button type='button' className='btn'>Delete</button>
             </div>
+        </div>
         </div>
     )
 }
