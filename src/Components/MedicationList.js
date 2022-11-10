@@ -1,62 +1,31 @@
-// will render all the medications that are created 
-// const MedicationList = (props) => {
-//     return(
-//         <div className="medication-list" 
-//         // onclick={() => {
-//         //     this.state.openMedicationList === true; 
-//         // }}
-//         >
-//             <p className='medication-name'>
-//                 Name: {props.medicationList.name}
-//             </p>
-//             <p className ='medication-qty'>
-//                 QTY: {props.medicationList.quantity}
-//             </p>
-//             <p className ='medication-dosage'>
-//                 Dosage Frequency: {props.medicationList.dosage_frequency}
-//             </p>
-//             <p className ='medication-refill_date'> Refill Date: {props.medicationList.refill_date}</p>
-//             <p className ='medication-refill-remaining'>
-//                 Refill Remaining: {props.medicationList.refill_remaining}
-//             </p>
-//             <p className='medication-notes'>
-//                 Notes: {props.medicationList.notes}
-//             </p>
-//             <p className =''>
-//                 Created at: {props.created_at}</p>
-//             <div className='edit-deleteBtn'>
-//                 <button type='button' className='btn btn-primary'>Edit</button>
-//                 <button type='button' className=''>Delete</button>
-//             </div>
-//         </div>
-//     )
-// }
 
- const MedicationList = (props) => {
+ const MedicationList = ({data, deleteMedications}) => {
+    // console.log("{data in MedicationList Component"{data)
     return(
-        <div id={props.index}>
+        <div id={data.id}className="individualMedicationContainer">
+            
         <div className="medication-list">
             <p className='medication-name'>
-                Name: {props.medicationList.name}
+                Name: {data.name}
             </p>
             <p className ='medication-qty'>
-                QTY: {props.medicationList.quantity}
+                QTY: {data.quantity}
             </p>
             <p className ='medication-dosage'>
-                Dosage Frequency: {props.medicationList.dosage_frequency}
+                Dosage Frequency: {data.dosage_frequency}
             </p>
-            <p className ='medication-refill_date'> Refill Date: {props.medicationList.refill_date}</p>
+            <p className ='medication-refill_date'> Refill Date: {data.refill_date}</p>
             <p className ='medication-refill-remaining'>
-                Refill Remaining: {props.medicationList.refill_remaining}
+                Refill Remaining: {data.refill_remaining}
             </p>
             <p className='medication-notes'>
-                Notes: {props.medicationList.notes}
+                Notes: {data.notes}
             </p>
             <p className =''>
-                Created at: {props.created_at}</p>
+                Created at: {data.created_at}</p>
             <div className='edit-deleteBtn'>
                 <button type='button' className='btn'>Edit</button>
-                <button type='button' className='btn'>Delete</button>
+                <button type='button' className='btn' onClick={()=>deleteMedications(data.id)}>Delete</button>
             </div>
         </div>
         </div>
