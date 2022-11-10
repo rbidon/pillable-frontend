@@ -3,9 +3,10 @@
     box-sizing: border-box;
     width: 100%;
 }
-.medicationListHolder{
+ /* STYLE FOR MEDICATION LIST */
+/* .medicationListHolder{
     display:flex;
-}
+} */
 
 .medicationListHolder{
     display: grid;

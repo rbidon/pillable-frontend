@@ -1,9 +1,16 @@
 
- const MedicationList = ({data, deleteMedications}) => {
+ const MedicationList = ({data, deleteMedications,setOpenModal}) => {
     // console.log("{data in MedicationList Component"{data)
     return(
-        <div id={data.id}className="individualMedicationContainer">
-            
+        <div id={data.id}className="individualMedicationContainer"
+        // onClick={()=>setOpenModal(true)}
+        >
+
+            {/* only show when the modal is open */}
+            {/* <button className="exitBtn"
+            onClick={() =>{
+                setOpenModal(false);
+            }}>X</button> */}
         <div className="medication-list">
             <p className='medication-name'>
                 Name: {data.name}

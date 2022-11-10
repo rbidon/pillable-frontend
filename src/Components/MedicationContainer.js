@@ -120,22 +120,46 @@ const addMedications = (medication) => {
 }
 // delete medications/fetch data
 const deleteMedications =(id) =>{
+    setMedications(medications.filter((medication)=> medication.id !==id))
+    console.log('data has been deleted')
     fetch('http://localhost:8000/api/v1/medications/'+id,{
         method:'DELETE'
-    })
-    .then(() => {
-        setMedications(medications.filter((medication)=> medication.id !==id))
-
-        console.log(medications)
-        // fetchData()
-        
     }).catch(err => console.log("error message:",err))
-    
+    console.log(medications)
 }
+
+//+++++++++++++++++++++++++++++++++++++++++++
+// Styling selection for the open modal 
+//++++++++++++++++++++++++++++++++++++++++++++=
+//  open the modal
+const [openModal, setOpenModal] = useState(false)
+// console.log(openModal)
+// Show Add Medication feature when move near it 
+const [hoverOverTest, setHoverOverTest] = useState(false)
+const handleMouseOver= ()=>{
+    setHoverOverTest(true)
+}
+const handleMoveOut =() => {
+    setHoverOverTest(false)
+}
+
     return (
        <>
        Medication Container
-       <AddMedications addMedications={addMedications}/>
+        {/* Add Medication Components / model function*/}
+      <div className='openModal bg-green-800 rounded-full flex
+      transition ease-in'
+      onMouseOver ={handleMouseOver}
+      onMouseOut={handleMoveOut} 
+      onClick = {() => {
+        setOpenModal(true)
+      }}>
+        Add Medication Icon (+)
+        {hoverOverTest && <h3>Add Medication</h3>}
+      </div>
+      {/* if hover over is true show the text */}
+      
+      {openModal && <AddMedications setOpenModal = {setOpenModal}addMedications={addMedications}/>}
        <h2>Medication List</h2>
        { medications
        ?
@@ -144,9 +168,12 @@ const deleteMedications =(id) =>{
       
        {medications.map((medication,idx) =>{
         return(
-            <div className='medicationListContainer'  key={idx}>
-                <MedicationList  deleteMedications={deleteMedications}
-                data={medication}/>
+            <div className='medicationListContainer md:flex flex-wrap'  key={idx}>
+                <MedicationList  
+                data={medication}
+                deleteMedications={deleteMedications}
+                setOpenModal={setOpenModal}
+                />
             </div>
         )
        })

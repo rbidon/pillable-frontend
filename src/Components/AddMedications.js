@@ -67,7 +67,7 @@ let baseURL= process.env.REACT_APP_.BASE_URL
 //                 }
 //     }
 
-const AddMedications = ({addMedications})=> {
+const AddMedications = ({addMedications,setOpenModal })=> {
   // start with clear 
   const [addmedication, setAddMedication] =useState({
         name:'',
@@ -123,7 +123,7 @@ const AddMedications = ({addMedications})=> {
                 <div className='addMedicationContainer'>
                   <div className='closeBtn'>
                     <button type='button' 
-                    // onClick={() => openAddMedication(false)}
+                    onClick={() => setOpenModal(false)}
                     > X</button>
                     </div>  
                     <form onSubmit={handleSubmit}>
@@ -138,9 +138,9 @@ const AddMedications = ({addMedications})=> {
                     <input type="submit" value="Add Medication" />
                     <button type='button' className='cancelBtn' 
                     
-                    // onClick={() =>{
+                    onClick={() =>{
                         
-                    //     openAddMedication(false)}}
+                        setOpenModal(false)}}
                         >Cancel</button>
                     </form>
                 </div>
