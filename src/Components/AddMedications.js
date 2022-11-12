@@ -1,6 +1,8 @@
-import React,{useState,useEffect, Component} from 'react'
-let baseURL= process.env.REACT_APP_.BASE_URL
+import React,{useState} from 'react'
 
+
+let baseURL= process.env.REACT_APP_.BASE_URL
+// 
 // class AddMedications extends  Component {
 //     constructor(props){
 //     super(props)
@@ -118,9 +120,9 @@ const AddMedications = ({addMedications,setOpenModal })=> {
 
     return(
      // making modal form
-            <div className='addMedicationBackground'>
+            <div className='MedicationBackground'>
                 AddMedications Section
-                <div className='addMedicationContainer'>
+                <div className='MedicationContainer'>
                   <div className='closeBtn'>
                     <button type='button' 
                     onClick={() => setOpenModal(false)}

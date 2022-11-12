@@ -1,7 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .body{
-    margin: 0 auto;
+    margin: 0;
     box-sizing: border-box;
     width: 100%;
+    overflow-x: none;
 }
  /* STYLE FOR MEDICATION LIST */
 /* .medicationListHolder{

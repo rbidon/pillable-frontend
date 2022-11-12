@@ -1,3 +1,4 @@
+import React from 'react';
 
  const MedicationList = ({data, deleteMedications,setOpenModal}) => {
     // console.log("{data in MedicationList Component"{data)
