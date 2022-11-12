@@ -162,9 +162,9 @@ const editMedications =(updateMedication,e) =>{
 //+++++++++++++++++++++++++++++++++++++++++++
 // Styling selection for the open modal 
 //++++++++++++++++++++++++++++++++++++++++++++=
-//  open the modal
-const [openModal, setOpenModal] = useState(false)
-// console.log(openModal)
+//  open the Add Medication modal
+const [openAddModal, setAddOpenModal] = useState(false)
+console.log('the open add modal is now',openAddModal)
 // Show Add Medication feature when move near it 
 const [hoverOverTest, setHoverOverTest] = useState(false)
 const handleMouseOver= ()=>{
@@ -180,21 +180,31 @@ const handleMoveOut =() => {
         {/* Add Medication Components / model function*/}
       {/* <div className='openModal bg-green-800 rounded-full flex
       transition ease-in' */}
-      <button type="button" className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+      <div type="button" className=" addMedBtn rounded-full"
 
 
       onMouseOver ={handleMouseOver}
       onMouseOut={handleMoveOut} 
       onClick = {() => {
-        setOpenModal(true)
+        setAddOpenModal(true)
       }}>
-        Add Medication Icon
-        <FontAwesomeIcon icon={solid('circle-plus')} size='2x'/>
-        {hoverOverTest && <h3>Add Medication</h3>}
-      </button>
-      {/* if hover over is true show the text */}
+       
+        {/* if hover over is true show the text */}
       
-      {openModal && <AddMedications setOpenModal = {setOpenModal}addMedications={addMedications}/>}
+        {hoverOverTest=== true
+        ?
+        <div class="HoverAddText"> 
+        {/* Add Medication Icon */}
+          <FontAwesomeIcon className="circle-plus"icon={solid('circle-plus')} size='2x'/>
+        <p>Add Medication</p>
+        </div>
+        : <FontAwesomeIcon className="circle-plus"icon={solid('circle-plus')} size='2x'/>
+
+         }
+        
+      </div>
+      
+      {openAddModal && <AddMedications setOpenModal = {setAddOpenModal}addMedications={addMedications}/>}
        <h2>Medication List</h2>
        { medications
        ?
@@ -207,14 +217,9 @@ const handleMoveOut =() => {
                 <MedicationList  
                 data={medication}
                 deleteMedications={deleteMedications}
-                // editMedications={editMedication}
-                setOpenModal={setOpenModal}
+                // editMedications={editMedications}
                 />
-                <EditMedication
-                data={medication}
-                editMedications={editMedications}
-                setOpenModal={setOpenModal}
-                />
+               
             </div>
         )
        })

@@ -1,7 +1,10 @@
-import React from 'react';
-
- const MedicationList = ({data, deleteMedications,setOpenModal}) => {
+import React, {useState} from 'react';
+import EditMedication from './EditMedications';
+ const MedicationList = ({data, deleteMedications,editMedications}) => {
     // console.log("{data in MedicationList Component"{data)
+    // OPEN THE EDIT MODAL
+    const [openEditModal, setEditOpenModal]= useState(false);
+    console.log('edit modal is now', openEditModal)
     return(
         <div id={data.id}className="individualMedicationContainer"
         // onClick={()=>setOpenModal(true)}
@@ -32,10 +35,24 @@ import React from 'react';
             <p className =''>
                 Created at: {data.created_at}</p>
             <div className='edit-deleteBtn'>
-                <button type='button' className='btn'>Edit</button>
-                <button type='button' className='btn' onClick={()=>deleteMedications(data.id)}>Delete</button>
+                <div type='button' className='editbtn'
+                //click edit will open the edit page model
+                onClick={() =>setEditOpenModal(true)}
+                
+                //  onClick={() =>editMedications(data.id)}
+                 >Edit</div>
+                 
+                <div type='button' className='deleteBtn' onClick={()=>deleteMedications(data.id)}>Delete</div>
             </div>
+            
         </div>
+        <div>
+        {openEditModal && <EditMedication
+                    data={data}
+                    editMedications={editMedications}
+                    setEditOpenModal={setEditOpenModal}
+                    />}
+                    </div>
         </div>
     )
 }

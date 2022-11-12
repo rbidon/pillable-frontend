@@ -1,4 +1,8 @@
 import React, {useState} from 'react'
+
+// Import Fontawesome for styling for the close button
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 let baseURL= process.env.REACT_APP_.BASE_URL
 
 const EditMedications = (props)=>{
@@ -47,13 +51,14 @@ const EditMedications = (props)=>{
         // making modal form
         <div className='MedicationBackground'>
         Edit Medication Section
-        <div className='MedicationContainer'>
-          <div className='closeBtn'>
-            <button type='button' 
-            onClick={() => props.setOpenModal(false)}
-            > X</button>
-            </div>  
-            <form onSubmit={handleSubmit}>
+        <div className='closeBtn'>
+        <div type='button' 
+            onClick={() => props.setEditOpenModal(false)}
+            > 
+            <FontAwesomeIcon icon={solid('x')}/>
+        </div>
+        </div>
+            <form className="AddEditForm"onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Name" value={editMedication.name} onChange={handleChange} />
             <input type="text" name="quantity" placeholder="Quantity" value={editMedication.quantity} onChange={handleChange} />
             <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={editMedication.dosage_frequency} onChange={handleChange}/>
@@ -62,16 +67,17 @@ const EditMedications = (props)=>{
             <textarea name="notes" placeholder="Notes" value={editMedication.notes} onChange={handleChange}>
             {editMedication.notes}
             </textarea>
-            <input type="submit" value="Add Medication" />
+            <div className="editCancelButton">
+            <input type="submit" value="Edit Medication" />
             <button type='button' className='cancelBtn' 
             
             onClick={() =>{
                 
-                props.setOpenModal(false)}}
+                props.setEditOpenModal(false)}}
                 >Cancel</button>
+            </div>
             </form>
         </div>
-    </div>
     )
 }
 
