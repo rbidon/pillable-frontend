@@ -68,13 +68,13 @@ const EditMedications = (props)=>{
             {editMedication.notes}
             </textarea>
             <div className="editCancelButton">
-            <input type="submit" value="Edit Medication" />
-            <button type='button' className='cancelBtn' 
+            <div type="submit"  className="EditAddBtn" > Edit Medication</div>
+            <div type='button' className='cancelBtn' 
             
             onClick={() =>{
                 
                 props.setEditOpenModal(false)}}
-                >Cancel</button>
+                >Cancel</div>
             </div>
             </form>
         </div>

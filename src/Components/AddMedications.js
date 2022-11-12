@@ -142,13 +142,15 @@ const AddMedications = ({addMedications,setOpenModal })=> {
                     {addmedication.notes}
                     </textarea>
                     <div className="editCancelButton">
-                    <input type="submit" value="Add Medication" />
-                    <button type='button' className='cancelBtn' 
+                    <input type="submit" className="EditAddBtn"
+                    value='Add Medication'  
+                    />
+                    <div type='button' className='cancelBtn' 
                     
                     onClick={() =>{
                         
                         setOpenModal(false)}}
-                        >Cancel</button> 
+                        >Cancel</div> 
                         </div>
                     </form>
                    

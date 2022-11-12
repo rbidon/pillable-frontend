@@ -193,7 +193,7 @@ const handleMoveOut =() => {
       
         {hoverOverTest=== true
         ?
-        <div class="HoverAddText"> 
+        <div className="HoverAddText"> 
         {/* Add Medication Icon */}
           <FontAwesomeIcon className="circle-plus"icon={solid('circle-plus')} size='2x'/>
         <p>Add Medication</p>
