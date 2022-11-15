@@ -7,7 +7,7 @@ import MedicationList from './MedicationList'
 import AddMedications from './AddMedications'
 // import Edit Medication 
 import EditMedication from './EditMedications'
-
+import Modal from 'react-bootstrap/Modal';
 
 // Import Fontawesome for styling for the add button
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -148,15 +148,32 @@ const editMedications =(updateMedication,e) =>{
     }
   })
   setMedications(newMedicationsArr)
-      // setMedications((previousMedication) => previousMedication.map((m) => {
-      //   if(m.id === medication.id){
-      //   return medication
-      //   console.log(medication)
-      // }else{
-      //   return m
-      //   console.log(m)
-      // }
-      // }))
+  //  setMedications((previousMedication) => previousMedication.map((m) => {
+  //       if(m.id === medication.id){ console.log(medication)
+  //       return medication
+       
+  //     }else{
+  //       return m
+  //       console.log(m)
+  //     }
+  //     }))
+  // setMedications((update)=>{
+  //   return update.map((med) =>{
+  //     if(med.id === medication.id){
+  //       return medication
+  //     }else{
+  //       return med
+  //     }
+  //   })
+  // let newMedicationsArr = medications.map((medication)=>{
+  //   if(medication.id=== updateMedication.id){
+  //     return updateMedication
+  //   } else{
+  //     return medication
+  //   }
+  // })
+  // setMedications(newMedicationsArr)
+     
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++
@@ -164,9 +181,14 @@ const editMedications =(updateMedication,e) =>{
 //++++++++++++++++++++++++++++++++++++++++++++=
 //  open the Add Medication modal
 const [openAddModal, setAddOpenModal] = useState(false)
+// OPEN THE EDIT MODAL
+const [openEditModal, setEditOpenModal]= useState(false);
+console.log('edit modal is now', openEditModal)
 console.log('the open add modal is now',openAddModal)
 // Show Add Medication feature when move near it 
 const [hoverOverTest, setHoverOverTest] = useState(false)
+
+
 const handleMouseOver= ()=>{
     setHoverOverTest(true)
 }
@@ -203,9 +225,32 @@ const handleMoveOut =() => {
          }
         
       </div>
-      
-      {openAddModal && <AddMedications setOpenModal = {setAddOpenModal}addMedications={addMedications}/>}
-       <h2>Medication List</h2>
+  <div>
+   {
+   (() =>{
+    if (openAddModal ===true){
+      return(
+         <>
+        <AddMedications 
+        setOpenModal = {setAddOpenModal}
+        addMedications={addMedications}/>
+       
+        </>
+      )
+      }   
+    // } else if(openEditModal ===true){
+    //   return(
+    //     <>
+    //     <EditMedication
+        
+    //     />
+    //     </>
+    //   )
+    // }
+    else{
+      return(
+      <> 
+        <h2>Medication List</h2>
        { medications
        ?
       <div className="medicationListHolder">
@@ -213,14 +258,37 @@ const handleMoveOut =() => {
       
        {medications.map((medication,idx) =>{
         return(
-            <div className='medicationListContainer md:flex flex-wrap'  key={idx}>
-                <MedicationList  
+          // <>
+          // {openEditModal ===true
+          //   ?<EditMedication
+          //   medicationsToEdit={medication}
+          //   editMedications={editMedications}
+          //   openEditModal={openEditModal}
+          //   setEditOpenModal={setEditOpenModal}
+          //   />
+          //   :
+          <>
+            <div className='c md:flex flex-wrap backgroundGRAY'
+            key={idx}
+            > 
+                <MedicationList 
                 data={medication}
                 deleteMedications={deleteMedications}
-                // editMedications={editMedications}
-                />
-               
-            </div>
+                editMedications={editMedications}
+                openEditModal={openEditModal}
+                setEditOpenModal={setEditOpenModal}
+                />    
+                <>
+                <EditMedication
+                 data={medication}
+                 editMedications={editMedications}
+                 openEditModal={openEditModal}
+                 setEditOpenModal={setEditOpenModal}/>
+                 </>
+                </div>
+            </>
+            // }
+            // </>
         )
        })
        }
@@ -232,7 +300,16 @@ const handleMoveOut =() => {
         } 
 
         </>
-    )
+      ) 
+      }
+    })()
+  }
+</div>
+        
+
+      </> 
+
+    )   
 }
 
 export default MedicationContainer

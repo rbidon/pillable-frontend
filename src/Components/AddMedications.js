@@ -4,6 +4,7 @@ import React,{useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
+import Modal from 'react-bootstrap/Modal';
 let baseURL= process.env.REACT_APP_.BASE_URL
 // 
 // class AddMedications extends  Component {
@@ -119,12 +120,15 @@ const AddMedications = ({addMedications,setOpenModal })=> {
         refill_remaining: '',
         notes: '',
       })
+    setOpenModal(false)
   }
 
     return(
      // making modal form
-            <div className=' fixed MedicationBackground'>
+<div className=' fixed MedicationBackground'>
                 AddMedications Section
+
+           
                 <div className='MedicationContainer'>
                   <div className='closeBtn'>
                     <div type='button' 
@@ -132,7 +136,8 @@ const AddMedications = ({addMedications,setOpenModal })=> {
                     > 
                      <FontAwesomeIcon icon={solid('x')}/></div>
                     </div>  
-                    <form className="AddEditForm" onSubmit={handleSubmit}>
+                    <form className="AddEditForm" onSubmit={handleSubmit}
+                    >
                     <input type="text" name="name" placeholder="Name" value={addmedication.name} onChange={handleChange} />
                     <input type="text" name="quantity" placeholder="Quantity" value={addmedication.quantity} onChange={handleChange} />
                     <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={addmedication.dosage_frequency} onChange={handleChange}/>
@@ -143,7 +148,7 @@ const AddMedications = ({addMedications,setOpenModal })=> {
                     </textarea>
                     <div className="editCancelButton">
                     <input type="submit" className="EditAddBtn"
-                    value='Add Medication'  
+                    value='Add Medication' 
                     />
                     <div type='button' className='cancelBtn' 
                     

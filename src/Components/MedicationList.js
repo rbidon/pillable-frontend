@@ -1,11 +1,23 @@
 import React, {useState} from 'react';
 import EditMedication from './EditMedications';
- const MedicationList = ({data, deleteMedications,editMedications}) => {
+ const MedicationList = ({data, deleteMedications,editMedications,setEditOpenModal,openEditModal}) => {
     // console.log("{data in MedicationList Component"{data)
     // OPEN THE EDIT MODAL
-    const [openEditModal, setEditOpenModal]= useState(false);
+    // const [openEditModal, setEditOpenModal]= useState(false);
     console.log('edit modal is now', openEditModal)
     return(
+    <>
+       {/* {openEditModal === true
+       
+        ?<>
+        <EditMedication
+          medicationsToEdit={data}
+          editMedications={editMedications}
+          openEditModal={openEditModal}
+          setEditOpenModal={setEditOpenModal}
+          />
+        </>
+        : */}
         <div id={data.id}className="individualMedicationContainer"
         // onClick={()=>setOpenModal(true)}
         >
@@ -39,21 +51,22 @@ import EditMedication from './EditMedications';
                 //click edit will open the edit page model
                 onClick={() =>setEditOpenModal(true)}
                 
-                //  onClick={() =>editMedications(data.id)}
                  >Edit</div>
                  
-                <div type='button' className='deleteBtn' onClick={()=>deleteMedications(data.id)}>Delete</div>
+                <div type='button' className='deleteBtn' onClick={()=>deleteMedications(data.id)}>Delete
+                </div>
             </div>
-            
         </div>
-        <div>
-        {openEditModal && <EditMedication
-                    data={data}
-                    editMedications={editMedications}
-                    setEditOpenModal={setEditOpenModal}
-                    />}
-                    </div>
-        </div>
+      </div>
+       
+        {/* } */}
+   
+        {/* <EditMedication
+            medicationsToEdit={data}
+           editMedications={editMedications}
+          setEditOpenModal={setEditOpenModal}
+        /> */}  
+    </>
     )
 }
 

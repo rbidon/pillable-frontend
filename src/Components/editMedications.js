@@ -5,36 +5,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 let baseURL= process.env.REACT_APP_.BASE_URL
 
-const EditMedications = (props)=>{
+const EditMedications = ({data,setEditOpenModal,editMedications})=>{
     // {medicationsToEdit,editMedications,setOpenModal}
-    const [editMedication, setEditMedication]=useState(props.data)
-
+    const [editMedication, setEditMedication]=useState(data)
+    console.log('Medication to edit', editMedication)
     const handleChange = (e) =>{
+        e.preventDefault()
         setEditMedication({
             ...editMedication, [e.target.name]:e.target.value
         })
     }
-    // fetch data and post the update 
-    const updateMedications = (id)=>{
-        fetch(baseURL 
-            +id,{
-            method: 'PUT',
-            body: JSON.stringify(editMedication),
-            headers:{
-                "Content-Type": "application/json",
-              }
-        })
-        .then(res => res.json())
-        .then (resJson => {
-                console.log('Update medication has been added - resJson', resJson)
-            setEditMedication(editMedication)
-        
-        })
-        .catch((err) => console.log('error', err))
-    }
-    const handleSubmit=(e) =>{
+        // fetch data and post the update 
+        const updateMedications = (id)=>{
+            fetch(baseURL 
+                +id,{
+                method: 'PUT',
+                body: JSON.stringify(editMedication),
+                headers:{
+                    "Content-Type": "application/json",
+                  }
+            })
+            .then(res => res.json())
+            .then (resJson => {
+                console.log('editted medication,', editMedication)
+                    console.log('Update medication has been added - resJson', resJson)
+                
+            
+            })
+            .catch((err) => console.log('error', err))
+        }
+    const handleSubmit=(e,) =>{
         e.preventDefault()
-        props.editMedications(editMedication)
+        editMedications(editMedication)
         updateMedications()
         console.log('Updated the data',editMedication)
         setEditMedication({
@@ -45,20 +47,26 @@ const EditMedications = (props)=>{
         refill_remaining: '',
         notes: '',
         })
+        // setEditOpenModal(false)
     }
+
+
 
     return(
         // making modal form
         <div className='MedicationBackground'>
         Edit Medication Section
+        <div className='MedicationContainer'>
         <div className='closeBtn'>
         <div type='button' 
-            onClick={() => props.setEditOpenModal(false)}
+            onClick={() => setEditOpenModal(false)}
             > 
             <FontAwesomeIcon icon={solid('x')}/>
         </div>
         </div>
-            <form className="AddEditForm"onSubmit={handleSubmit}>
+
+            <form className="AddEditForm"
+            onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Name" value={editMedication.name} onChange={handleChange} />
             <input type="text" name="quantity" placeholder="Quantity" value={editMedication.quantity} onChange={handleChange} />
             <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={editMedication.dosage_frequency} onChange={handleChange}/>
@@ -68,15 +76,16 @@ const EditMedications = (props)=>{
             {editMedication.notes}
             </textarea>
             <div className="editCancelButton">
-            <div type="submit"  className="EditAddBtn" > Edit Medication</div>
+            <button type='submit' className="EditAddBtn" > Edit Medication</button>
             <div type='button' className='cancelBtn' 
             
             onClick={() =>{
                 
-                props.setEditOpenModal(false)}}
+                setEditOpenModal(false)}}
                 >Cancel</div>
             </div>
             </form>
+        </div>
         </div>
     )
 }
