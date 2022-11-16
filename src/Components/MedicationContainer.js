@@ -13,7 +13,14 @@ import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-let baseURL= process.env.REACT_APP_BASE_URL
+let baseURL = ''
+if(process.env.NODE_ENV === 'development'){
+  baseURL = process.env.REACT_APP_BASE_URL
+} else{
+  // heroku backend url
+  baseURL = process.env.REACT_APP_API_URL
+}
+// }let baseURL= process.env.REACT_APP_BASE_URL
 
 // class MedicationContainer extends Component {
 //     constructor(props){
