@@ -7,6 +7,15 @@ import MedicationContainer from './Components/MedicationContainer';
 import AddMedications from './Components/AddMedications'
 import EditMedications from './Components/EditMedications'
 import Footer from './Components/Footer'
+
+let baseURL = ''
+if(process.env.NODE_ENV === 'development'){
+  baseURL = process.env.REACT_APP_BASE_URL
+} else{
+  // heroku backend url
+  baseURL = process.env.REACT_APP_BACKEND_URL
+}
+
 const App =(props) => {
   const [openAddModal, setAddOpenModal] = useState(false)
     

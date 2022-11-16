@@ -13,7 +13,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-let baseURL= process.env.REACT_APP_.BASE_URL
+let baseURL= process.env.REACT_APP_BASE_URL
 
 // class MedicationContainer extends Component {
 //     constructor(props){
@@ -129,7 +129,7 @@ const addMedications = (medication) => {
 // delete medications/fetch data
 const deleteMedications =(id) =>{
     console.log('data has been deleted')
-    fetch('http://localhost:8000/api/v1/medications/'+id,{
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/${id}`,{
         method:'DELETE'
     }).then(
       console.log('data has been deleted'),

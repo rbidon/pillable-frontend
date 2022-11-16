@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 // Import Fontawesome for styling for the close button
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-let baseURL= process.env.REACT_APP_.BASE_URL
+let baseURL= process.env.REACT_APP_BASE_URL
 
 const EditMedications = ({data,setEditOpenModal,editMedications})=>{
     // {medicationsToEdit,editMedications,setOpenModal}
