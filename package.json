@@ -1,6 +1,9 @@
 {
   "name": "pillable-frontend",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.x"
+  },
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.20.1",
