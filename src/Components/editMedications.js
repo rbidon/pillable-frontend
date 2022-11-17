@@ -4,7 +4,13 @@ import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-let baseURL= process.env.REACT_APP_BASE_URL
+let baseURL = ''
+if(process.env.NODE_ENV === 'development'){
+  baseURL = process.env.REACT_APP_BASE_URL
+} else{
+  // heroku backend url
+  baseURL = process.env.REACT_APP_API_URL
+}
 
 const EditMedications = ({data,setEditOpenModal,editMedications})=>{
     // {medicationsToEdit,editMedications,setOpenModal}
@@ -15,11 +21,12 @@ const EditMedications = ({data,setEditOpenModal,editMedications})=>{
         setEditMedication({
             ...editMedication, [e.target.name]:e.target.value
         })
+        // console.log('Handle Change set', editMedication)
     }
         // fetch data and post the update 
-        const updateMedications = (id)=>{
-            fetch(baseURL 
-                +id,{
+        const updateMedications = ()=>{
+            console.log('data has been updated')
+            fetch(`${baseURL}${editMedication.id}`,{
                 method: 'PUT',
                 body: JSON.stringify(editMedication),
                 headers:{
@@ -28,16 +35,17 @@ const EditMedications = ({data,setEditOpenModal,editMedications})=>{
             })
             .then(res => res.json())
             .then (resJson => {
-                console.log('editted medication,', editMedication)
+                console.log('edited medication,', editMedication)
                     console.log('Update medication has been added - resJson', resJson)
-                
+                    editMedications(editMedication)
             
-            })
+                })
+                
             .catch((err) => console.log('error', err))
+            console.log(editMedication)
         }
     const handleSubmit=(e,) =>{
         e.preventDefault()
-        editMedications(editMedication)
         updateMedications()
         console.log('Updated the data',editMedication)
         setEditMedication({

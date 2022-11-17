@@ -28,9 +28,10 @@ margin: 0;
 
 /* FOOTER */
 .Footer {
-    position: fixed;
+    position: relative;
+    bottom: 0px;
     background-color:rgb(254 249 195);
     min-height: 208px;
     width: 100%;
-    bottom: 0;
+    /* bottom: 0; */
 }
