@@ -3,8 +3,6 @@ import React, {useState,useEffect} from 'react';
 import './MedicationContainer.css'
 // import Medication List
 import MedicationList from './MedicationList'
-// import addMedications
-import AddMedications from './AddMedications'
 // import Edit Medication 
 import EditMedication from './EditMedications'
 import Modal from 'react-bootstrap/Modal';
@@ -137,8 +135,7 @@ console.log('the open add modal is now',openAddModal)
                 data={medication}
                 deleteMedications={props.deleteMedications}
                 editMedications={props.editMedications}
-                openEditModal={openEditModal}
-                setEditOpenModal={setEditOpenModal}
+                setEditOpenModal={props.setAddOpenModal}
                 />    
                 
                 </div>

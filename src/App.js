@@ -103,12 +103,10 @@ const App =() => {
 // Styling selection for the open modal 
 //++++++++++++++++++++++++++++++++++++++++++++=
   const [openAddModal, setAddOpenModal] = useState(false)
-    console.log('Add Medication button is', openAddModal)
   return (
     <div className="App">
       App Container
       <Header/>
-     {}
       {openAddModal === true 
       ? <>
       <AddMedications
@@ -128,8 +126,12 @@ const App =() => {
       />
       </>
       
-  }          
+  }      
+  {/* <>
+      <Footer/>
+    </>      */}
     </div>
+   
   )
   
 }
