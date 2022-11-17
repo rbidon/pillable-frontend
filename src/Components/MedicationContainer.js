@@ -4,8 +4,8 @@ import './MedicationContainer.css'
 // import Medication List
 import MedicationList from './MedicationList'
 // import Edit Medication 
-import EditMedication from './EditMedications'
-import Modal from 'react-bootstrap/Modal';
+// import EditMedication from './EditMedications'
+// import Modal from 'react-bootstrap/Modal';
 
 
 

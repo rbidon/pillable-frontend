@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import EditMedication from './EditMedications';
+// import EditMedication from './EditMedications';
  const MedicationList = ({data, deleteMedications,editMedications,setEditOpenModal,openEditModal}) => {
     // console.log("{data in MedicationList Component"{data)
     // OPEN THE EDIT MODAL
