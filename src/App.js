@@ -6,8 +6,8 @@ import Header from './Components/Header';
 import AddMedicationBtn from './Components/AddMedicationBtn'
 import MedicationContainer from './Components/MedicationContainer'
 import AddMedications from './Components/AddMedications'
-import EditMedications from './Components/EditMedications'
-import Footer from './Components/Footer'
+// import EditMedications from './Components/EditMedications'
+// import Footer from './Components/Footer'
 
 let baseURL = ''
 if(process.env.NODE_ENV === 'development'){
