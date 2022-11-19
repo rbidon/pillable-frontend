@@ -90,7 +90,7 @@ const AddMedications = ({addMedications,setOpenModal })=> {
   }
   // fetch the data 
    const saveAddMedications = () =>{
-    fetch(baseURL,{
+    fetch(`${baseURL}/api/v1/medications/`,{
       method:'POST',
       body: JSON.stringify(addmedication),
       headers:{

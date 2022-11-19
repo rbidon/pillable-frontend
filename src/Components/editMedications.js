@@ -4,13 +4,13 @@ import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-let baseURL = ''
-if(process.env.NODE_ENV === 'development'){
-  baseURL = process.env.REACT_APP_BASE_URL
-} else{
-  // heroku backend url
-  baseURL = process.env.REACT_APP_API_URL
-}
+// let baseURL = ''
+// if(process.env.NODE_ENV === 'development'){
+//   baseURL = process.env.REACT_APP_BASE_URL
+// } else{
+//   // heroku backend url
+//   baseURL = process.env.REACT_APP_API_URL
+// }
 
 const EditMedications = ({data,setEditOpenModal,editMedications})=>{
     // {medicationsToEdit,editMedications,setOpenModal}
@@ -24,9 +24,9 @@ const EditMedications = ({data,setEditOpenModal,editMedications})=>{
         // console.log('Handle Change set', editMedication)
     }
         // fetch data and post the update 
-        const updateMedications = ()=>{
+        const updateMedications = (id)=>{
             console.log('data has been updated')
-            fetch(`${baseURL}${editMedication.id}`,{
+            fetch(`${baseURL}/api/v1/medications/${id}`,{
                 method: 'PUT',
                 body: JSON.stringify(editMedication),
                 headers:{

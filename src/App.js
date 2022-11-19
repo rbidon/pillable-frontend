@@ -23,7 +23,7 @@ const App =() => {
     const [medications, setMedications] = useState([])
     //  Fetching the data by that api
       const fetchData = () => {
-        fetch(baseURL)
+        fetch(`${baseURL}/api/v1/medications/`)
           .then(res => {
             if(res.status === 200){
               return res.json()
@@ -53,7 +53,7 @@ const App =() => {
     const deleteMedications =(id) =>{
         console.log('data has been deleted')
         // there is a slash in the
-        fetch(`${baseURL}${id}`,{
+        fetch(`${baseURL}api/v1/medications/${id}`,{
             method:'DELETE'
         }).then(
           console.log('data has been deleted'),
