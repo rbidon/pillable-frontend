@@ -1,10 +1,13 @@
-import React, {Component} from 'react'
+import React, {Component, useState} from 'react'
 
-export default class Header extends Component {
-    render(){
+ const Header =()=> {
+    const [navbarOpen, setNavbarOpen] =useState(false);
+
         return( 
         //    <h2>Header/ Navbar Component</h2> 
-            <div className="NavbarContainer">
+        <>
+        <nav className="nav">
+            <div className="NavbarContainer ">
                
                 <div div="PillableHeaderLogo">
                     Navbar Icon
@@ -13,15 +16,17 @@ export default class Header extends Component {
                 <div className="NavbarList">
                     {/*  */}
                     <ul className="navbar-items">
-                    <li>
+                    {/* <li>
                         Sign In
                     </li>
-                    <li>Register</li>
+                    <li>Register</li> */}
                     </ul>
                 </div>
                 </div>
 
             </div>
+            </nav>
+            </>
         )
     }
-}
+export default  Header

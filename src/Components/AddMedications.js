@@ -109,9 +109,9 @@ const AddMedications = ({addMedications,setOpenModal })=> {
   // handle the submit form
   const handleSubmit = (event) =>{
   event.preventDefault()
+  saveAddMedications()
   addMedications(addmedication) 
   console.log("data has been submitted", addmedication)
-  saveAddMedications()
   setAddMedication(
         {name:'',
         quantity: '',
@@ -126,24 +126,27 @@ const AddMedications = ({addMedications,setOpenModal })=> {
     return(
      // making modal form
 <div className=' fixed MedicationBackground'>
-                AddMedications Section
+               
 
            
-                <div className='MedicationContainer'>
-                  <div className='closeBtn'>
+                <div className='MedicationContainer'> <div className='closeBtn'>
                     <div type='button' 
                     onClick={() => setOpenModal(false)}
                     > 
                      <FontAwesomeIcon icon={solid('x')}/></div>
                     </div>  
+                <h2 className="addMedicationHeader">Add New Medication </h2>
+                 
                     <form className="AddEditForm" onSubmit={handleSubmit}
                     >
-                    <input type="text" name="name" placeholder="Name" value={addmedication.name} onChange={handleChange} />
+                    <label htmlFor="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" value={addmedication.name} onChange={handleChange} />
                     <input type="text" name="quantity" placeholder="Quantity" value={addmedication.quantity} onChange={handleChange} />
                     <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={addmedication.dosage_frequency} onChange={handleChange}/>
                     <input type="date" name="refill_date" placeholder="Refill Date" value={addmedication.refill_date} onChange={handleChange}/>
                     <input type="number" name="refill_remaining" placeholder="Refill Remaining" value={addmedication.refill_remaining} onChange={handleChange}/>
-                    <textarea name="notes" placeholder="Notes" value={addmedication.notes} onChange={handleChange}>
+                    <textarea name="notes" placeholder="Notes" value={addmedication.notes} onChange={handleChange}
+                    rows="8" cols="60" maxLength="50">
                     {addmedication.notes}
                     </textarea>
                     <div className="editCancelButton">

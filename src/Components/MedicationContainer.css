@@ -1,21 +1,36 @@
-.body{
-    margin: 0 auto;
+@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);
+
+body{
+    margin: 0;
     box-sizing: border-box;
     width: 100%;
     padding:0;
-    overflow-y: hidden;
+    min-height: 100vh;
+    overflow-x:hidden;
 }
 
  /* STYLE FOR MEDICATION LIST */
 /* .medicationListHolder{
     display:flex;
 } */
+.medicationListHeader{
+    text-align: center;
+}
+.medicationsOverall{
+    /* min-height: 1000px; */
+    /* min-height: 100vh; */
+    min-height: 500vh;
+}
 .MedicationContainer{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     max-height:500px;
     /* align-items: flex-end; */
+}
+.individualMedicationContainer{
+    max-width: 266px;
+    max-height: 438px;
 }
 .closeBtn{
     color:black;
@@ -28,35 +43,42 @@
 .medicationListHolder{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* grid-template-rows: repeat(3, 1fr); */
     grid-column-gap: 8px;
     grid-row-gap: 8px;
-    height:250px; /* or whatever width you want. */
+    height:250px; 
     max-height:250px;
-    }
+    padding: 10px;
+    } 
+/* .medicationListHeader{
+    display:flex;
+} */
 .individualMedicationContainer{
     border: 1px solid;
     border-radius:5px;
     padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 /* ADD MEDICATION SECTION */
-
-/* .MedicationBackground{
+.addMedicationHeader{
+    font-family: "Roboto", "Helvetica Neue", "italic";
+    text-align: center;
+}
+.MedicationBackground{
     /* border: 5px solid red;
-  background-color: yellow; */
-  /* box-shadow: 3px 3px 10px rgba(0 0 0 / 0.5); */
-  /* width: 100vw;
-  height: 100vh; */
-  /* background-color: transparent;
+  background-color: yellow;  */
+  /* box-shadow: 3px 3px 10px rgba(0 0 0 / 0.5);  */
+   width: 100vw;
+  height: 100vh; 
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; */
-/* } */
+  flex-direction: column;
+}
 
-/* .MedicationContainer{
-    width: 500px;
+.MedicationContainer{
+    width: 70%;
   height: 500px;
   border-radius: 12px;
   background-color: white;
@@ -64,7 +86,7 @@
   display: flex;
   flex-direction: column;
   padding: 25px;
-} */
+}
 
 .addMedBtn{
  width: 152px;
@@ -77,6 +99,7 @@
      border: 1px solid green;
     border-radius:5px;
     width: 152px;
+    /* background-color: rgb(22 101 52); */
 }
 .closeBtn{
     display: flex;
@@ -109,6 +132,7 @@
     display: flex;
     justify-content:space-evenly;
     align-items: center;
+    margin-top: 20px;
 }
 .editbtn{
     border-radius:5px;
@@ -124,3 +148,10 @@
     padding:5px
 }
 
+@media screen and (max-width: 680px) {
+.medicationListHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}

@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react';
+import EditMedications from './EditMedications';
 // import css
 import './MedicationContainer.css'
 // import Medication List
@@ -99,65 +100,35 @@ import MedicationList from './MedicationList'
 // }
 
 const MedicationContainer = (props) => {
+console.log(props.medications)
 
 
-
-//  open the Add Medication modal
-const [openAddModal, setAddOpenModal] = useState(false)
-// OPEN THE EDIT MODAL
-const [openEditModal, setEditOpenModal]= useState(false);
-console.log('edit modal is now', openEditModal)
-console.log('the open add modal is now',openAddModal)
-
+//  open the Show Medication modal
 
     return (
        <>
-       Medication Container
-        {/* Add Medication Components / model function*/}
-      {/* <div className='openModal bg-green-800 rounded-full flex
-      transition ease-in' */}
+       {props.openEditModal ===true
+    ?<>
+    <EditMedications
+    medications={props.medications}
+    editMedications={props.editMedications}
+    EditOpenModal={props.setOpenEditModal}
+    />
+    </>
+       
+       
       
-      <> 
-        <h2>Medication List</h2>
-        
-       {props.medications
-       ?
-      <div className="medicationListHolder">
-      
-      
-       {props.medications.map((medication,idx) =>{
-        return(
-          <>
-            <div className='c md:flex flex-wrap backgroundGRAY'
-            key={idx}
-            > 
-                <MedicationList 
-                data={medication}
+      :<MedicationList 
+                
+                medications={props.medications}
                 deleteMedications={props.deleteMedications}
                 editMedications={props.editMedications}
-                setEditOpenModal={props.setAddOpenModal}
-                />    
-                
-                </div>
-            </>
-            // }
-            // </>
-        )
-       })
-       }
-       </div>
-       : 
-       <>
-       No List
-       </>
-        } 
-
-        </>
-
-        
-
+                openEditModal={props.openEditModal}
+                setOpenEditModal={props.setOpenEditModal}
+                /> 
+       
+  }
       </> 
-
     )   
 }
 

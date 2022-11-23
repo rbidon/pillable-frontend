@@ -2,10 +2,9 @@ import React from 'react';
 
  const Footer = () => {
     return(
-        <div className="Footer container-fluid">
-            Footer
-            <h3 className="footerHeader"> 
-            <span>©</span> Copyright 2022</h3>
+        <div className="Footer fixed container-fluid bg-yellow-100">
+            <p className="footerHeader"> 
+             Copyright <span>©</span> 2022 Pillable </p>
         </div>
     )
 }

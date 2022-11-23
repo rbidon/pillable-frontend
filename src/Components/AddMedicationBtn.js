@@ -6,7 +6,7 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 const AddMedicationBtn = (props)=>{
     // Show Add Medication feature when move near it 
 const [hoverOverTest, setHoverOverTest] = useState(false)
-console.log('Add Medication button is', props.setAddOpenModal)
+// console.log('Add Medication button is', props.setAddOpenModal)
 
 const handleMouseOver= ()=>{
     setHoverOverTest(true)

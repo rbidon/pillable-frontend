@@ -1,21 +1,25 @@
-import React, {useState} from 'react'
-
+import React, {useState, useEffect} from 'react'
+import MedicationContainer from './MedicationContainer'
 // Import Fontawesome for styling for the close button
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-// let baseURL = ''
-// if(process.env.NODE_ENV === 'development'){
-//   baseURL = process.env.REACT_APP_BASE_URL
-// } else{
-//   // heroku backend url
-//   baseURL = process.env.REACT_APP_API_URL
-// }
+let baseURL = ''
+if(process.env.NODE_ENV === 'development'){
+  baseURL = process.env.REACT_APP_BASE_URL
+} else{
+  // heroku backend url
+  baseURL = process.env.REACT_APP_API_URL
+}
+console.log("baseURL:" ,baseURL)
 
-const EditMedications = ({data,setEditOpenModal,editMedications})=>{
+const EditMedications = (props)=>{
+// props.setEditOpenModal,editMedications})
     // {medicationsToEdit,editMedications,setOpenModal}
-    const [editMedication, setEditMedication]=useState(data)
-    console.log('Medication to edit', editMedication)
+    const [editMedication, setEditMedication]=useState(props.medications)
+    console.log("data from the container is now",editMedication)
+    // console.log("data id is now",editMedication.id)
+    // console.log('Medication to edit',editMedication.id)
     const handleChange = (e) =>{
         e.preventDefault()
         setEditMedication({
@@ -37,15 +41,20 @@ const EditMedications = ({data,setEditOpenModal,editMedications})=>{
             .then (resJson => {
                 console.log('edited medication,', editMedication)
                     console.log('Update medication has been added - resJson', resJson)
-                    editMedications(editMedication)
+                    
+                    props.editMedications(editMedication)
+                    console.log('Medication to edit', editMedication)
             
                 })
                 
             .catch((err) => console.log('error', err))
             console.log(editMedication)
         }
-    const handleSubmit=(e,) =>{
+        useEffect(() => {updateMedications()}, []);
+
+    const handleSubmit=(e) =>{
         e.preventDefault()
+        
         updateMedications()
         console.log('Updated the data',editMedication)
         setEditMedication({
@@ -56,19 +65,19 @@ const EditMedications = ({data,setEditOpenModal,editMedications})=>{
         refill_remaining: '',
         notes: '',
         })
-        // setEditOpenModal(false)
+        props.EditOpenModal(false)
     }
 
 
 
     return(
         // making modal form
-        <div className='MedicationBackground'>
+        <div id={editMedication.id}className='MedicationBackground editMedications'>
         Edit Medication Section
         <div className='MedicationContainer'>
         <div className='closeBtn'>
         <div type='button' 
-            onClick={() => setEditOpenModal(false)}
+            onClick={() => props.EditOpenModal(false)}
             > 
             <FontAwesomeIcon icon={solid('x')}/>
         </div>
@@ -85,12 +94,12 @@ const EditMedications = ({data,setEditOpenModal,editMedications})=>{
             {editMedication.notes}
             </textarea>
             <div className="editCancelButton">
-            <button type='submit' className="EditAddBtn" > Edit Medication</button>
+            <button type='submit' className="EditAddBtn"> Edit Medication</button>
             <div type='button' className='cancelBtn' 
             
             onClick={() =>{
                 
-                setEditOpenModal(false)}}
+                props.EditOpenModal(false)}}
                 >Cancel</div>
             </div>
             </form>

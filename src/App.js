@@ -1,13 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import './App.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './Components/MedicationContainer.css'
+import './App.css'
+
 // import Header
 import Header from './Components/Header';
 import AddMedicationBtn from './Components/AddMedicationBtn'
 import MedicationContainer from './Components/MedicationContainer'
 import AddMedications from './Components/AddMedications'
-// import EditMedications from './Components/EditMedications'
-// import Footer from './Components/Footer'
+import EditMedications from './Components/EditMedications'
+import Footer from './Components/Footer'
 
 let baseURL = ''
 if(process.env.NODE_ENV === 'development'){
@@ -38,7 +45,7 @@ const App =() => {
             // setMedications(medications =>[...medications,data])
             // console.log(setMedications(medications =>[...medications,data]))
             setMedications(data.data)
-            console.log(medications, data)
+            console.log(medications, data.data)
         }))
       }
       useEffect(() => {
@@ -53,14 +60,17 @@ const App =() => {
     const deleteMedications =(id) =>{
         console.log('data has been deleted')
         // there is a slash in the
-        fetch(`${baseURL}api/v1/medications/${id}`,{
+        fetch(`${baseURL}/api/v1/medications/${id}`,{
             method:'DELETE'
-        }).then(
+        })
+        .then(
           console.log('data has been deleted'),
           setMedications(medications.filter((medication)=> medication.id !==id))
-        ).catch(err => console.log("error message:",err))
+      )
+        .catch(err => console.log("error message:",err))
         console.log(medications)
     }
+    useEffect(() => {deleteMedications()}, []);
     
     // EDIT MEDICATION
     const editMedications =(updateMedication) =>{
@@ -103,35 +113,105 @@ const App =() => {
 // Styling selection for the open modal 
 //++++++++++++++++++++++++++++++++++++++++++++=
   const [openAddModal, setAddOpenModal] = useState(false)
+  const [openEditModal, setOpenEditModal] = useState(false)
+  console.log('Status of the edit modal is now', openEditModal)
+  const openShowModal = useState()
   return (
     <div className="App">
-      App Container
+      
+     
       <Header/>
-      {openAddModal === true 
-      ? <>
-      <AddMedications
-      setOpenModal = {setAddOpenModal}
-      addMedications = {addMedications}
-        />
+
+      {/* open the modal effect for the edit, add & show buttons */}
+      {(() =>{
+        if(openAddModal === true){
+        return( 
+        <>
+        <AddMedications
+        setOpenModal = {setAddOpenModal}
+        addMedications = {addMedications}
+        /> 
         </>
+
+        )
+      }
+      // else if(openEditModal === true){
+      //   return( 
+      //     <>
+      //     <EditMedications
+      //     data={medications}
+      //     openEditModal={openEditModal}
+      //     setOpenEditModal={setOpenEditModal}/>
+      //       </>
+      //   )
+      // }
+      else{
+        return(
+          <>
+        <AddMedicationBtn
+        setAddOpenModal={setAddOpenModal}/>
+        <div className="medicationsOverall">
+        <MedicationContainer
+        medications={medications}
+          deleteMedications={deleteMedications}
+        editMedications={editMedications}
+        openEditModal={openEditModal}
+        setOpenEditModal={setOpenEditModal}
+        />   
+        </div>
+       </>
+        )
+      }
+    })()}
+      {/* {openAddModal === true 
+      ?
+       
       :<>
       <AddMedicationBtn
       setAddOpenModal={setAddOpenModal}/>
+      <div className="medicationsOverall">
       <MedicationContainer
       medications={medications}
       deleteMedications={deleteMedications}
       editMedications={editMedications}
       // openEditModal={openEditModal}
-      // setEditOpenModal={setEditOpenModal}
-      />
-      </>
-      
-  }      
-  {/* <>
-      <Footer/>
-    </>      */}
-    </div>
+      EditOpenModal={setOpenEditModal}
+      />   
+      </div>
+       </> */}
+
+  {/* {openEditModal ===true
+    ?<>
+    <EditMedications
+    editMedications={editMedications}
+    EditOpenModal={setOpenEditModal}
+    />
+    </>
+    :<>
+     <AddMedicationBtn
+    setAddOpenModal={setAddOpenModal}/>
+    <div className="medicationsOverall">
+    <MedicationContainer
+    medications={medications}
+    deleteMedications={deleteMedications}
+    editMedications={editMedications}
+    // openEditModal={openEditModal}
+    EditOpenModal={setOpenEditModal}
+    />  
+    </div> 
+    </> 
+    } */}
+     
+  
+       
+
    
+   
+    
+    <>
+     <Footer/>
+      </>
+      </div>
   )
   
 }

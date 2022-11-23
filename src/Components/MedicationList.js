@@ -1,72 +1,78 @@
-import React, {useState} from 'react';
-// import EditMedication from './EditMedications';
- const MedicationList = ({data, deleteMedications,editMedications,setEditOpenModal,openEditModal}) => {
-    // console.log("{data in MedicationList Component"{data)
-    // OPEN THE EDIT MODAL
-    // const [openEditModal, setEditOpenModal]= useState(false);
-    console.log('edit modal is now', openEditModal)
+import React, {useState, useEffect} from 'react';
+import EditMedication from './EditMedications';
+let baseURL = ''
+if(process.env.NODE_ENV === 'development'){
+  baseURL = process.env.REACT_APP_BASE_URL
+} else{
+  // heroku backend url
+  baseURL = process.env.REACT_APP_BACKEND_URL
+}
+ const MedicationList = (props) => {
+//  .data, deleteMedications, editMedications, openEditModal, setOpenEditModal, modalID})
+// const editMedications =()=>{
+//     props.setOpenEditModal(true),
+//     props.editMedications()
+// }
     return(
     <>
-       {/* {openEditModal === true
-       
-        ?<>
-        <EditMedication
-          medicationsToEdit={data}
-          editMedications={editMedications}
-          openEditModal={openEditModal}
-          setEditOpenModal={setEditOpenModal}
-          />
-        </>
-        : */}
-        <div id={data.id}className="individualMedicationContainer"
+        <h2 className="medicationListHeader">Medication List</h2>
+       <div className="MedicationOuter"> 
+      <div className=" container medicationListHolder">
+      {props.medications.map((medication) =>{
+        return(
+            <>
+          <div className='c md:flex flex-wrap backgroundGRAY'
+            key={medication.id}
+            > 
+             <div  id={medication.id}className="individualMedicationContainer"
         // onClick={()=>setOpenModal(true)}
         >
-
-            {/* only show when the modal is open */}
-            {/* <button className="exitBtn"
-            onClick={() =>{
-                setOpenModal(false);
-            }}>X</button> */}
-        <div className="medication-list">
+<div className="medication-list">
             <p className='medication-name'>
-                Name: {data.name}
+                Name: {medication.name}
             </p>
             <p className ='medication-qty'>
-                QTY: {data.quantity}
+                QTY: {medication.quantity}
             </p>
             <p className ='medication-dosage'>
-                Dosage Frequency: {data.dosage_frequency}
+                Dosage Frequency: {medication.dosage_frequency}
             </p>
-            <p className ='medication-refill_date'> Refill Date: {data.refill_date}</p>
+            <p className ='medication-refill_date'> Refill Date: {medication.refill_date}</p>
             <p className ='medication-refill-remaining'>
-                Refill Remaining: {data.refill_remaining}
+                Refill Remaining: {medication.refill_remaining}
             </p>
             <p className='medication-notes'>
-                Notes: {data.notes}
+                Notes: {medication.notes}
             </p>
-            <p className =''>
-                Created at: {data.created_at}</p>
+            {/* <p className =''>
+                Created at: {medication.created_at}</p> */}
             <div className='edit-deleteBtn'>
                 <div type='button' className='editbtn'
                 //click edit will open the edit page model
-                onClick={() =>setEditOpenModal(true)}
                 
+                // {...medication.id === medication.id}
+                onClick={() =>
+                    props.setOpenEditModal(true)
+                }
+                // onClick={() => display === true}
                  >Edit</div>
-                 
-                <div type='button' className='deleteBtn' onClick={()=>deleteMedications(data.id)}>Delete
+                
+                <div type='button' className='deleteBtn' onClick={()=>props.deleteMedications(medication.id)}>Delete
                 </div>
-            </div>
+            </div> 
+            </div> 
         </div>
+            
+            
+            </div>
+            
+        </>
+        )
+      }
+      )}
       </div>
-       
-        {/* } */}
-   
-        {/* <EditMedication
-            medicationsToEdit={data}
-           editMedications={editMedications}
-          setEditOpenModal={setEditOpenModal}
-        /> */}  
-    </>
+      </div>
+        </>
     )
 }
 
@@ -78,4 +84,4 @@ import React, {useState} from 'react';
 //     refill_remaining = IntegerField()
 //     notes = CharField()
 //     created_at =
-export default MedicationList
+export default MedicationList;
