@@ -13,7 +13,7 @@ import Header from './Components/Header';
 import AddMedicationBtn from './Components/AddMedicationBtn'
 import MedicationContainer from './Components/MedicationContainer'
 import AddMedications from './Components/AddMedications'
-import EditMedications from './Components/EditMedications'
+// import EditMedications from './Components/EditMedications'
 import Footer from './Components/Footer'
 
 let baseURL = ''
