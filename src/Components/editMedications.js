@@ -16,8 +16,9 @@ console.log("baseURL:" ,baseURL)
 const EditMedications = (props)=>{
 // props.setEditOpenModal,editMedications})
     // {medicationsToEdit,editMedications,setOpenModal}
+    // const [editMedication, setEditMedication]=useState(props.medications)
     const [editMedication, setEditMedication]=useState(props.medications)
-    console.log("data from the container is now",editMedication)
+    console.log("data from the container is now","EditMedication[0]",editMedication[0],"props.medication", props.medications.id)
     // console.log("data id is now",editMedication.id)
     // console.log('Medication to edit',editMedication.id)
     const handleChange = (e) =>{
@@ -30,7 +31,7 @@ const EditMedications = (props)=>{
         // fetch data and post the update 
         const updateMedications = (id)=>{
             console.log('data has been updated')
-            fetch(`${baseURL}/api/v1/medications/${id}`,{
+            fetch(`${baseURL}/api/v1/medications/${editMedication}`,{
                 method: 'PUT',
                 body: JSON.stringify(editMedication),
                 headers:{
@@ -73,7 +74,7 @@ const EditMedications = (props)=>{
     return(
         // making modal form
         <div id={editMedication.id}className='MedicationBackground editMedications'>
-        Edit Medication Section
+        {/* Edit Medication Section */}
         <div className='MedicationContainer'>
         <div className='closeBtn'>
         <div type='button' 
@@ -82,6 +83,9 @@ const EditMedications = (props)=>{
             <FontAwesomeIcon icon={solid('x')}/>
         </div>
         </div>
+        {/* <div className="addEditHeader"> */}
+        <h2 className="addMedicationHeader">Edit Medication </h2>
+                {/* </div> */}
 
             <form className="AddEditForm"
             onSubmit={handleSubmit}>

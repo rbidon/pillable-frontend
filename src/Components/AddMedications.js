@@ -98,9 +98,10 @@ const AddMedications = ({addMedications,setOpenModal })=> {
         // credentials: "include"
       }
     })
-      .then(res => res.json())
+      .then(res => res.json(), addMedications(addmedication) )
       .then (resJson => {
-                  console.log('New medication has been added - resJson', resJson) 
+                  console.log('New medication has been added - resJson', resJson)
+                 
     })
       .catch((err) => console.log('error'))
   } 
@@ -108,9 +109,8 @@ const AddMedications = ({addMedications,setOpenModal })=> {
   // fetchdata to post 
   // handle the submit form
   const handleSubmit = (event) =>{
-  event.preventDefault()
+  event.preventDefault() 
   saveAddMedications()
-  addMedications(addmedication) 
   console.log("data has been submitted", addmedication)
   setAddMedication(
         {name:'',
@@ -129,17 +129,26 @@ const AddMedications = ({addMedications,setOpenModal })=> {
                
 
            
-                <div className='MedicationContainer'> <div className='closeBtn'>
+                <div className='MedicationContainer'> 
+                {/* <div className="ContainerforCloseandEdit"> */}
+                
+                <div className='closeBtn'>
+                  
                     <div type='button' 
                     onClick={() => setOpenModal(false)}
                     > 
                      <FontAwesomeIcon icon={solid('x')}/></div>
+
+
                     </div>  
-                <h2 className="addMedicationHeader">Add New Medication </h2>
+                    {/* <div className="addEditHeader"> */}
+                  <h2 className="addMedicationHeader">Add New Medication </h2>
+                {/* </div> */}
+                {/* </div> */}
                  
                     <form className="AddEditForm" onSubmit={handleSubmit}
                     >
-                    <label htmlFor="name">Name</label>
+                    {/* <label htmlFor="name">Name</label> */}
                     <input type="text" name="name" id="name" placeholder="Name" value={addmedication.name} onChange={handleChange} />
                     <input type="text" name="quantity" placeholder="Quantity" value={addmedication.quantity} onChange={handleChange} />
                     <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={addmedication.dosage_frequency} onChange={handleChange}/>

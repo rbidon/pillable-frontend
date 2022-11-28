@@ -16,7 +16,6 @@ const handleMoveOut =() => {
 }
 return(
     <>
-    Add Medication Button Function
     <div type="button" className=" addMedBtn rounded-full"
 
 

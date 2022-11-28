@@ -39,13 +39,13 @@ const App =() => {
               return []
           }
         })
-          .then((data => {
+          .then((medications => {
             // console.log("Before the setMedication" ,data);
             // medications has the data from my api
             // setMedications(medications =>[...medications,data])
             // console.log(setMedications(medications =>[...medications,data]))
-            setMedications(data.data)
-            console.log(medications, data.data)
+            setMedications(medications.data)
+            console.log("data",medications, medications.data)
         }))
       }
       useEffect(() => {

@@ -10,8 +10,8 @@ if(process.env.NODE_ENV === 'development'){
  const MedicationList = (props) => {
 //  .data, deleteMedications, editMedications, openEditModal, setOpenEditModal, modalID})
 // const editMedications =()=>{
-//     props.setOpenEditModal(true),
-//     props.editMedications()
+    
+//     props.editMedications(props.medication.id),
 // }
     return(
     <>
@@ -51,9 +51,10 @@ if(process.env.NODE_ENV === 'development'){
                 //click edit will open the edit page model
                 
                 // {...medication.id === medication.id}
-                onClick={() =>
+                onClick={()=>{
                     props.setOpenEditModal(true)
-                }
+                }}
+                
                 // onClick={() => display === true}
                  >Edit</div>
                 
