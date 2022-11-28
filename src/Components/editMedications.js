@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import MedicationContainer from './MedicationContainer'
 // Import Fontawesome for styling for the close button
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'

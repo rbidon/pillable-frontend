@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import EditMedications from './EditMedications.js';
+import EditMedications from './EditMedications';
 // import css
 import './MedicationContainer.css'
 // import Medication List
