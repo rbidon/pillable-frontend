@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import EditMedication from './EditMedications';
+import React from 'react';
 let baseURL = ''
 if(process.env.NODE_ENV === 'development'){
   baseURL = process.env.REACT_APP_BASE_URL
