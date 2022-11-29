@@ -9,40 +9,40 @@ if(process.env.NODE_ENV === 'development'){
 }
  const MedicationList = (props) => {
 //  .data, deleteMedications, editMedications, openEditModal, setOpenEditModal, modalID})
-// const editMedications =()=>{
-    
+const pasingEditMedicationDate =()=>{
+    props.editMedications(props.medication.id)
+    props.setOpenEditModal(true)
+}
 //     props.editMedications(props.medication.id),
 // }
     return(
     <>
-        <h2 className="medicationListHeader">Medication List</h2>
-       <div className="MedicationOuter"> 
-      <div className=" container medicationListHolder">
-      {props.medications.map((medication) =>{
-        return(
+        
+       
+     
             <>
           <div className='c md:flex flex-wrap backgroundGRAY'
-            key={medication.id}
+            // key={medication.id}
             > 
-             <div  id={medication.id}className="individualMedicationContainer"
+             <div  id={props.medication.id}className="individualMedicationContainer"
         // onClick={()=>setOpenModal(true)}
         >
 <div className="medication-list">
             <p className='medication-name'>
-                Name: {medication.name}
+                Name: {props.medication.name}
             </p>
             <p className ='medication-qty'>
-                QTY: {medication.quantity}
+                QTY: {props.medication.quantity}
             </p>
             <p className ='medication-dosage'>
-                Dosage Frequency: {medication.dosage_frequency}
+                Dosage Frequency: {props.medication.dosage_frequency}
             </p>
-            <p className ='medication-refill_date'> Refill Date: {medication.refill_date}</p>
+            <p className ='medication-refill_date'> Refill Date: {props.medication.refill_date}</p>
             <p className ='medication-refill-remaining'>
-                Refill Remaining: {medication.refill_remaining}
+                Refill Remaining: {props.medication.refill_remaining}
             </p>
             <p className='medication-notes'>
-                Notes: {medication.notes}
+                Notes: {props.medication.notes}
             </p>
             {/* <p className =''>
                 Created at: {medication.created_at}</p> */}
@@ -51,14 +51,14 @@ if(process.env.NODE_ENV === 'development'){
                 //click edit will open the edit page model
                 
                 // {...medication.id === medication.id}
-                onClick={()=>{
-                    props.setOpenEditModal(true)
-                }}
+                onClick={
+                    pasingEditMedicationDate
+                }
                 
                 // onClick={() => display === true}
                  >Edit</div>
                 
-                <div type='button' className='deleteBtn' onClick={()=>props.deleteMedications(medication.id)}>Delete
+                <div type='button' className='deleteBtn' onClick={()=>props.deleteMedications(props.medication.id)}>Delete
                 </div>
             </div> 
             </div> 
@@ -68,11 +68,8 @@ if(process.env.NODE_ENV === 'development'){
             </div>
             
         </>
-        )
-      }
-      )}
-      </div>
-      </div>
+      
+
         </>
     )
 }

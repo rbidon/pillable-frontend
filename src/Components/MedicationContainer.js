@@ -106,7 +106,7 @@ console.log(props.medications)
 //  open the Show Medication modal
 
     return (
-       <>
+    <>
        {props.openEditModal ===true
     ?<>
     <EditMedications
@@ -118,18 +118,39 @@ console.log(props.medications)
        
        
       
-      :<MedicationList 
+      :<>
+      <h2 className="medicationListHeader">Medication List</h2>
+      <div className="MedicationOuter"> 
+      <div className=" container medicationListHolder">
+       {props.medications.map((medication =>{
+        return(
+          <div key ={medication.id}>
+          
+           <MedicationList 
+                
+                medication={medication}
+                deleteMedications={props.deleteMedications}
+                editMedications={props.editMedications}
+                openEditModal={props.openEditModal}
+                setOpenEditModal={props.setOpenEditModal}
+                />
+          </div>
+        )}))
+        }
+      </div>
+      </div>
+      </>
+  }
+   </>
+    ) 
+}
+{/* <MedicationList 
                 
                 medications={props.medications}
                 deleteMedications={props.deleteMedications}
                 editMedications={props.editMedications}
                 openEditModal={props.openEditModal}
                 setOpenEditModal={props.setOpenEditModal}
-                /> 
-       
-  }
-      </> 
-    )   
-}
+                />  */}
 
 export default MedicationContainer

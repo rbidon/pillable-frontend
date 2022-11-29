@@ -16,8 +16,17 @@ const EditMedications = (props)=>{
 // props.setEditOpenModal,editMedications})
     // {medicationsToEdit,editMedications,setOpenModal}
     // const [editMedication, setEditMedication]=useState(props.medications)
-    const [editMedication, setEditMedication]=useState(props.medications)
-    console.log("data from the container is now","EditMedication[0]",editMedication[0],"props.medication", props.medications.id)
+    const [editMedication, setEditMedication]=useState(
+    props.medications)
+    
+    // for(let medication of editMedication){
+    //     setEditMedication(medication)
+    //     console.log("for in loop medication", medication
+    //     ,"editMedication", editMedication)
+    // } 
+// editMedication.map(medication=>setEditMedication(medication))
+    
+    console.log("data from the container is now","EditMedication[0]",editMedication,"props.medication", props.medications)
     // console.log("data id is now",editMedication.id)
     // console.log('Medication to edit',editMedication.id)
     const handleChange = (e) =>{
@@ -30,7 +39,7 @@ const EditMedications = (props)=>{
         // fetch data and post the update 
         const updateMedications = (id)=>{
             console.log('data has been updated')
-            fetch(`${baseURL}/api/v1/medications/${editMedication}`,{
+            fetch(`${baseURL}/api/v1/medications/${editMedication.id}`,{
                 method: 'PUT',
                 body: JSON.stringify(editMedication),
                 headers:{
@@ -39,11 +48,14 @@ const EditMedications = (props)=>{
             })
             .then(res => res.json())
             .then (resJson => {
-                console.log('edited medication,', editMedication)
+                console.log('edited medication,', editMedication.id)
                     console.log('Update medication has been added - resJson', resJson)
                     
-                    props.editMedications(editMedication)
+                    
                     console.log('Medication to edit', editMedication)
+
+                   
+                    
             
                 })
                 
@@ -54,7 +66,8 @@ const EditMedications = (props)=>{
 
     const handleSubmit=(e) =>{
         e.preventDefault()
-        
+        console.log(props.editMedications)
+        props.editMedications(editMedication)
         updateMedications()
         console.log('Updated the data',editMedication)
         setEditMedication({
@@ -88,10 +101,15 @@ const EditMedications = (props)=>{
 
             <form className="AddEditForm"
             onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Name" value={editMedication.name} onChange={handleChange} />
-            <input type="text" name="quantity" placeholder="Quantity" value={editMedication.quantity} onChange={handleChange} />
-            <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={editMedication.dosage_frequency} onChange={handleChange}/>
-            <input type="date" name="refill_date" placeholder="Refill Date" value={editMedication.refill_date} onChange={handleChange}/>
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Name" value={editMedication.name} onChange={handleChange} />
+
+            <label htmlFor="quantity">Quantity</label>
+            <input type="text" name="quantity" id="quantity" placeholder="Quantity" value={editMedication.quantity} onChange={handleChange} />
+
+            <label htmlFor="dosage_frequency">Dosage Frequency</label>
+            <input type="text" name="dosage_frequency" id="dosage_frequency"placeholder="Dosage Frequency" value={editMedication.dosage_frequency} onChange={handleChange}/>
+            {/* <input type="date" name="refill_date" placeholder="Refill Date" value={editMedication.refill_date} onChange={handleChange}/> */}
             <input type="number" name="refill_remaining" placeholder="Refill Remaining" value={editMedication.refill_remaining} onChange={handleChange}/>
             <textarea name="notes" placeholder="Notes" value={editMedication.notes} onChange={handleChange}>
             {editMedication.notes}
