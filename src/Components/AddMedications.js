@@ -152,7 +152,7 @@ const AddMedications = ({addMedications,setOpenModal })=> {
                     <input type="text" name="name" id="name" placeholder="Name" value={addmedication.name} onChange={handleChange} />
                     <input type="text" name="quantity" placeholder="Quantity" value={addmedication.quantity} onChange={handleChange} />
                     <input type="text" name="dosage_frequency" placeholder="Dosage Frequency" value={addmedication.dosage_frequency} onChange={handleChange}/>
-                    <input type="date" name="refill_date" placeholder="Refill Date" value={addmedication.refill_date} onChange={handleChange}/>
+                    {/* <input type="date" name="refill_date" placeholder="Refill Date" value={addmedication.refill_date} onChange={handleChange}/> */}
                     <input type="number" name="refill_remaining" placeholder="Refill Remaining" value={addmedication.refill_remaining} onChange={handleChange}/>
                     <textarea name="notes" placeholder="Notes" value={addmedication.notes} onChange={handleChange}
                     rows="8" cols="60" maxLength="50">

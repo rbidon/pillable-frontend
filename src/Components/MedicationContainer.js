@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import EditMedications from './EditMedications';
 // import css
 import './MedicationContainer.css'

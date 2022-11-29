@@ -1,11 +1,5 @@
 import React from 'react';
-let baseURL = ''
-if(process.env.NODE_ENV === 'development'){
-  baseURL = process.env.REACT_APP_BASE_URL
-} else{
-  // heroku backend url
-  baseURL = process.env.REACT_APP_BACKEND_URL
-}
+
  const MedicationList = (props) => {
 //  .data, deleteMedications, editMedications, openEditModal, setOpenEditModal, modalID})
 const pasingEditMedicationDate =()=>{
@@ -36,7 +30,7 @@ const pasingEditMedicationDate =()=>{
             <p className ='medication-dosage'>
                 Dosage Frequency: {props.medication.dosage_frequency}
             </p>
-            <p className ='medication-refill_date'> Refill Date: {props.medication.refill_date}</p>
+            {/* <p className ='medication-refill_date'> Refill Date: {props.medication.refill_date}</p> */}
             <p className ='medication-refill-remaining'>
                 Refill Remaining: {props.medication.refill_remaining}
             </p>

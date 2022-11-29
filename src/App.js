@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import './Components/MedicationContainer.css'
 import './App.css'
+import './Components/MedicationContainer.css'
+
 
 // import Header
 import Header from './Components/Header';

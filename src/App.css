@@ -19,7 +19,9 @@ body{
     height: 50px;
 }
 .PillableHeaderLogo{
-    padding-right: 10px;
+    display: flex;
+    align-items: center;
+     padding-right: 10px;
 }
 .NavbarlistContainer{
     padding-right: 10px;
