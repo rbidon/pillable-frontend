@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'development'){
  const MedicationList = (props) => {
 //  .data, deleteMedications, editMedications, openEditModal, setOpenEditModal, modalID})
 const pasingEditMedicationDate =()=>{
-    props.editMedications(props.medication.id)
+    // props.editMedications(props.medication.id)
     props.setOpenEditModal(true)
 }
 //     props.editMedications(props.medication.id),

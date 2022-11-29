@@ -73,17 +73,27 @@ const App =() => {
     
     // EDIT MEDICATION
     const editMedications =(updateMedication) =>{
-      let newMedicationsArr = medications.map((medication)=>{
-        if(medication.id=== updateMedication.id){
-          console.log("updateMedication information:",updateMedication)
-          return updateMedication
-          
-        } else{
-          console.log("medication information:",medication)
-          return medication
-        }
+      setMedications((update)=>{
+        return update.map((p)=>{
+          if(p.id === updateMedication.id){
+            return update
+          } else{
+            return p 
+          }
+        })
       })
-      setMedications(newMedicationsArr)
+    }
+      // let newMedicationsArr = medications.map((medication)=>{
+      //   if(medication.id=== updateMedication.id){
+      //     console.log("updateMedication information:",updateMedication)
+      //     return updateMedication
+          
+      //   } else{
+      //     console.log("medication information:",medication)
+      //     return medication
+      //   }
+      // })
+      // setMedications(newMedicationsArr)
       //  setMedications((previousMedication) => previousMedication.map((m) => {
       //       if(m.id === medication.id){ console.log(medication)
       //       return medication
@@ -110,7 +120,7 @@ const App =() => {
       // })
       // setMedications(newMedicationsArr)
          
-    }
+    // }
   //+++++++++++++++++++++++++++++++++++++++++++
 // Styling selection for the open modal 
 //++++++++++++++++++++++++++++++++++++++++++++=

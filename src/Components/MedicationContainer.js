@@ -104,46 +104,86 @@ console.log(props.medications)
 
 
 //  open the Show Medication modal
-
-    return (
-    <>
-       {props.openEditModal ===true
-    ?<>
+return(
+  <>
+   {props.openEditModal ===true
+   ?<>
     <EditMedications
-    medications={props.medications}
-    editMedications={props.editMedications}
-    EditOpenModal={props.setOpenEditModal}
-    />
-    </>
-       
-       
-      
-      :<>
-      <h2 className="medicationListHeader">Medication List</h2>
-      <div className="MedicationOuter"> 
-      <div className=" container medicationListHolder">
-       {props.medications.map((medication =>{
-        return(
-          <div key ={medication.id}>
-          
-           <MedicationList 
-                
-                medication={medication}
-                deleteMedications={props.deleteMedications}
-                editMedications={props.editMedications}
-                openEditModal={props.openEditModal}
-                setOpenEditModal={props.setOpenEditModal}
-                />
-          </div>
-        )}))
-        }
-      </div>
-      </div>
-      </>
-  }
+     medications={props.medications}
+      editMedications={props.editMedications}
+        EditOpenModal={props.setOpenEditModal}
+         />
    </>
-    ) 
+   :<>
+    <h2 className="medicationListHeader">Medication List</h2>
+       <div className="MedicationOuter"> 
+      <div className=" container medicationListHolder">
+      <>
+   {props.medications.map((medication =>{
+    return(
+    <div key={medication.id}>
+               <MedicationList 
+   medication={medication}             deleteMedications={props.deleteMedications}
+    editMedications={props.editMedications}
+    openEditModal={props.openEditModal}setOpenEditModal={props.setOpenEditModal}
+    />
+     </div>
+    )
+  })
+  )}
+  </>
+      </div>
+      </div>
+   </>
+  }
+  </>
+)
+  //   return (
+  //   <>
+  //   {props.medications.map((medication =>{
+      
+  //   if(props.openEditModal ===true){
+  //     return( 
+  //     <>
+  //     <EditMedications
+  //     medications={medication}
+  //     editMedications={props.editMedications}
+  //     EditOpenModal={props.setOpenEditModal}
+  //   />
+  //     </>
+  //     )
+  //   } else{
+      
+  //     return(
+  //     <>
+  //     <h2 className="medicationListHeader">Medication List</h2>
+  //     <div className="MedicationOuter"> 
+  //     <div className=" container medicationListHolder">
+       
+  //         <div key ={medication.id}>
+           
+  //          <MedicationList 
+                
+  //               medication={medication}
+  //               deleteMedications={props.deleteMedications}
+  //               editMedications={props.editMedications}
+  //               openEditModal={props.openEditModal}
+  //               setOpenEditModal={props.setOpenEditModal}
+  //              />
+  //         </div>
+  //         </div>
+  //     </div>
+  //     </>
+  //     )
+      
+      
+      
+  //   }
+  //   }))} 
+  //   </>
+  // )
 }
+
 {/* <MedicationList 
                 
                 medications={props.medications}

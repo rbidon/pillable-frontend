@@ -26,7 +26,7 @@ const EditMedications = (props)=>{
     // } 
 // editMedication.map(medication=>setEditMedication(medication))
     
-    console.log("data from the container is now","EditMedication[0]",editMedication,"props.medication", props.medications)
+    console.log("data from the container is now","EditMedication[0]",editMedication.id,"props.medication", props.medications)
     // console.log("data id is now",editMedication.id)
     // console.log('Medication to edit',editMedication.id)
     const handleChange = (e) =>{
@@ -37,7 +37,7 @@ const EditMedications = (props)=>{
         // console.log('Handle Change set', editMedication)
     }
         // fetch data and post the update 
-        const updateMedications = (id)=>{
+        const updateMedications = ()=>{
             console.log('data has been updated')
             fetch(`${baseURL}/api/v1/medications/${editMedication.id}`,{
                 method: 'PUT',
@@ -61,14 +61,14 @@ const EditMedications = (props)=>{
                 
             .catch((err) => console.log('error', err))
             console.log(editMedication)
-        }
-        useEffect(() => {updateMedications()}, []);
+        };
 
     const handleSubmit=(e) =>{
         e.preventDefault()
         console.log(props.editMedications)
-        props.editMedications(editMedication)
         updateMedications()
+        props.editMedications(editMedication) 
+        
         console.log('Updated the data',editMedication)
         setEditMedication({
         name:'',
