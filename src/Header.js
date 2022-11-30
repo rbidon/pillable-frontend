@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react'
-import '../App.css'
+import './App.css'
  const Header =()=> {
     const [navbarOpen, setNavbarOpen] =useState(false);
 
@@ -9,8 +9,8 @@ import '../App.css'
         <nav className="nav">
             <div className="NavbarContainer ">
                
-                <div div="PillableHeaderLogo">
-                    <h3>
+                <div className="PillableHeaderLogo">
+                    <h3 className="PillableHeader">
                         Pillable
                     </h3>
                 </div>

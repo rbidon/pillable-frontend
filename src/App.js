@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import './App.css'
-import './Components/MedicationContainer.css'
+import './MedicationContainer.css'
 
 
 // import Header
-import Header from './Components/Header';
-import AddMedicationBtn from './Components/AddMedicationBtn'
-import MedicationContainer from './Components/MedicationContainer'
-import AddMedications from './Components/AddMedications'
-import Footer from './Components/Footer'
+import Header from './Header';
+import AddMedicationBtn from './AddMedicationBtn'
+import MedicationContainer from './MedicationContainer'
+import AddMedications from './AddMedications'
+import Footer from './Footer'
 
 let baseURL = ''
 if(process.env.NODE_ENV === 'development'){

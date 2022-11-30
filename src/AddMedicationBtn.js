@@ -32,7 +32,7 @@ return(
         <div className="HoverAddText"> 
         {/* Add Medication Icon */}
           <FontAwesomeIcon className="circle-plus"icon={solid('circle-plus')} size='2x'/>
-        <p>Add Medication</p>
+        <p className="HoverText"> Add Medication</p>
         </div>
         : <FontAwesomeIcon className="circle-plus"icon={solid('circle-plus')} size='2x'/>
 

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
  const MedicationList = (props) => {
 //  .data, deleteMedications, editMedications, openEditModal, setOpenEditModal, modalID})
+
 const pasingEditMedicationDate =()=>{
-    // props.editMedications(props.medication.id)
+//    props.editMedications(props.medication)
     props.setOpenEditModal(true)
 }
 //     props.editMedications(props.medication.id),

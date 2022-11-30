@@ -20,8 +20,19 @@ body{
 }
 .PillableHeaderLogo{
     display: flex;
-    align-items: center;
-     padding-right: 10px;
+    align-items: flex-start;
+     /* padding-right: 10px; */
+}
+.PillableHeader{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: solid white;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    border-style: double;
 }
 .NavbarlistContainer{
     padding-right: 10px;

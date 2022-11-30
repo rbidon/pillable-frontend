@@ -50,9 +50,11 @@ const EditMedications = (props)=>{
             .then (resJson => {
                 console.log('edited medication,', editMedication.id)
                     console.log('Update medication has been added - resJson', resJson)
-                    props.editMedications(editMedication)
-                    
-                    console.log('Medication to edit', editMedication)
+                    // props.editMedications(editMedication)
+                    // this.EditMedications(
+                    //     resJson  
+                    // )
+                    console.log('Medication to edit', resJson,editMedication)
 
                    
                    
@@ -67,10 +69,8 @@ const EditMedications = (props)=>{
 
     const handleSubmit=(e) =>{
         e.preventDefault()
-        console.log("New medication that was submitted",editMedication)
-        updateMedications()
-        props.editMedications(editMedication) 
-        
+        props.editMedications(editMedication)
+         console.log("New medication that was submitted",editMedication)
         console.log('Updated the data',editMedication)
         setEditMedication({
         name:'',
