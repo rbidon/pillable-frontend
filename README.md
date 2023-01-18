@@ -4,8 +4,6 @@
 
 Medication Tracker Application
 
-In the project directory, you can run:
-
 ## Technologies
 Frontend:
 React
@@ -39,4 +37,4 @@ As a user, I want to be able to log out
 
 
 ## Unsolved Problems/ Future Features
-Cureently the edit page is just rendering one medication based on the []. Working on this issue. Will input a api to auto fill medication data.
+Currently the edit page is just rendering one medication based on the []. Working on this issue. Will input a api to auto fill medication data.
