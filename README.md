@@ -7,8 +7,10 @@ Medication Tracker Application
 ## Technologies
 Frontend:
 React
+
 Backend:
 Python,Flask
+
 To View Backend Link: [Pillable-Backend](https://github.com/rbidon/pillable-backend)
 
 
