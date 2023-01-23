@@ -17,13 +17,19 @@ To View Backend Link: [Pillable-Backend](https://github.com/rbidon/pillable-back
 ## User Stories
 
 As a user, I want to be able to track my medication
+
 As a user, I want to create an account
+
 As a user, I want to log in into my account
+
 As a user, I want to see all my tracked medication and calendar
+
 As a user, I want to add a new medication to track
+
 As a user, I want to retrieve my tracked medication
+
 As a user, I want to update the tracked medication
-As a user, I want to delete my tracked medication and show in the calendar
+
 As a user, I want to be able to log out
 
 ## Wireframe
